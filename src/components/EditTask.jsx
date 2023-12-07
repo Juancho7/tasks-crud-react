@@ -15,8 +15,7 @@ const EditTask = ({ id, title, onEditTask, onEditingDone }) => {
 
   return (
     <>
-      {/* TODO: Add the value to input */}
-      <input type='text' placeholder='Write the new task title here...' onChange={handleChange} />
+      <input type='text' value={editedTitle} placeholder='Write the new task title here...' onChange={handleChange} />
       <button onClick={onSaveEditedTask}>Save</button>
     </>
   )
