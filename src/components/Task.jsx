@@ -24,7 +24,7 @@ const Task = ({ id, title, completed, onCompleteTask, onEditTask, onDeleteTask }
           ? <EditTask id={id} title={title} onEditTask={onEditTask} onEditingDone={onEdit} />
           : (
             <>
-              <div className='lg:grow h-8 flex items-center lg:gap-x-2'>
+              <div className='lg:grow h-8 flex items-center lg:gap-x-2 overflow-hidden'>
                 <span className={`${completedClass} lg:order-2 w-full pl-1 text-white rounded overflow-hidden overflow-ellipsis`}>{title}</span>
                 <button onClick={onComplete} className='lg:order-1 h-full px-1 lg:px-3 bg-green-500 hover:bg-green-300 rounded transition-colors'>Done</button>
               </div>
