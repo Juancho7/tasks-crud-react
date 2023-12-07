@@ -1,10 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TaskList from './components/TaskList'
 import './App.css'
 
 const App = () => {
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(fetchTasksFromLocalstorage())
   const [task, setTask] = useState('')
+
+  function fetchTasksFromLocalstorage () {
+    const storedTasks = window.localStorage.getItem('tasks')
+    const initialTasksList = storedTasks ? JSON.parse(storedTasks) : []
+    return initialTasksList
+  }
+
+  useEffect(() => {
+    window.localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
   const handleChange = (event) => {
     const taskTitle = event.target.value
@@ -39,7 +49,7 @@ const App = () => {
 
   const onEditTask = (id, newTitle) => {
     const updatedTasks = tasks.map(task => {
-      if (task.id === id) return { ...task, title: newTitle, completed: !task.completed }
+      if (task.id === id) return { ...task, title: newTitle }
 
       return task
     })
