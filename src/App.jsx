@@ -1,20 +1,13 @@
 import { useState, useEffect } from 'react'
 import TaskList from './components/TaskList'
+import { saveTasksOnLocalstorage, fetchTasksFromLocalstorage } from './logic/storage'
 import './App.css'
 
 const App = () => {
   const [tasks, setTasks] = useState(fetchTasksFromLocalstorage())
   const [task, setTask] = useState('')
 
-  function fetchTasksFromLocalstorage () {
-    const storedTasks = window.localStorage.getItem('tasks')
-    const initialTasksList = storedTasks ? JSON.parse(storedTasks) : []
-    return initialTasksList
-  }
-
-  useEffect(() => {
-    window.localStorage.setItem('tasks', JSON.stringify(tasks))
-  }, [tasks])
+  useEffect(() => saveTasksOnLocalstorage(tasks), [tasks])
 
   const handleChange = (event) => {
     const taskTitle = event.target.value
@@ -35,6 +28,7 @@ const App = () => {
 
     const newTasksList = [...tasks, newTask]
     setTasks(newTasksList)
+    setTask('')
   }
 
   const onCompleteTask = (id) => {
