@@ -3,7 +3,7 @@ import Task from './Task'
 
 const TaskList = ({ tasksList, onCompleteTask, onEditTask, onDeleteTask }) => {
   return (
-    <ul>
+    <ul className='flex flex-col gap-y-2'>
       {
         tasksList.map(task => (
           <Task key={task.id} id={task.id} title={task.title} completed={task.completed} onCompleteTask={onCompleteTask} onEditTask={onEditTask} onDeleteTask={onDeleteTask} />

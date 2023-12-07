@@ -15,6 +15,8 @@ const App = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
 
+    if (task === '') return
+
     const newTask = {
       id: crypto.randomUUID(),
       title: task,
@@ -53,14 +55,16 @@ const App = () => {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        <input type='text' placeholder='Write your task here...' onChange={handleChange} value={task} />
-        <input type='submit' value='Add' />
+      <form onSubmit={handleSubmit} className='px-1 py-2 sm:px-10 md:px-20 lg:px-52 xl:px-96 flex gap-x-2 bg-blue-ribbon-500'>
+        <input type='text' placeholder='Write your task here...' onChange={handleChange} value={task} className='grow p-1  rounded' />
+        <input type='submit' value='Add' className='px-1 lg:px-5 font-semibold text-white bg-blue-ribbon-800 hover:bg-blue-ribbon-600 rounded cursor-pointer transition-colors' />
       </form>
-
-      <section>
-        <TaskList tasksList={tasks} onCompleteTask={onCompleteTask} onEditTask={onEditTask} onDeleteTask={onDeleteTask} />
-      </section>
+      {/* TODO: when tasks list is empty, not to render this section */}
+      <div className='sm:px-10 md:px-20 lg:px-52 xl:px-96'>
+        <section className='mt-3 md:mt-5 lg:mt-10 p-1 py-2 sm:mx-auto bg-blue-ribbon-500 rounded'>
+          <TaskList tasksList={tasks} onCompleteTask={onCompleteTask} onEditTask={onEditTask} onDeleteTask={onDeleteTask} />
+        </section>
+      </div>
     </main>
   )
 }
