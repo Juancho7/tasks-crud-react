@@ -1,17 +1,31 @@
-### Tasks Crud With React
+# Tasks Crud With React (Responsive)
 
-#### Objetivo:
+![Tasks CRUD](./docs/screenshot.PNG 'Tasks CRUD')
 
-Crear un componente de lista de tareas en React.
+## Description
 
-#### Requisitos:
+This a tasks CRUD application made with **React**, **TawilwindCSS** and **LocalStorage** for data persistence.
 
-1. [x] Crear un nuevo proyecto de React (puedes usar Create React App u otra configuración de tu elección).
-2. [x] Crear un componente llamado `TaskList` que renderice una lista de tareas.
-3. [x] Cada tarea debe tener un checkbox para marcarla como completada y un botón para eliminarla de la lista.
-4. [x] Debe haber un formulario para agregar nuevas tareas a la lista.
-5. [x] El estado de las tareas debe manejarse de manera adecuada utilizando el estado local del componente.
+This app lets you add, update, mark as complete, see and delete tasks.
 
-#### Puntos extra (opcional):
+### Installation
 
-- [x] Implementar estilos CSS para mejorar la apariencia del componente.
+To clone this repository, run the followng command:
+
+```bash
+git clone https://github.com/Juancho7/tasks-crud-react.git
+```
+
+Next, change directory with this:
+
+```bash
+cd tasks-crud-react
+```
+
+And finally install the dependencies:
+
+```bash
+npm install
+```
+
+Thank you for being here! &#x1F604;
