@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import TaskList from './components/TaskList'
-import { saveTasksOnLocalstorage, fetchTasksFromLocalstorage } from './logic/storage'
+import { saveTasksOnLocalstorage } from './logic/storage'
+import { useTasks } from './hooks/useTasks'
 import './App.css'
 
 const App = () => {
-  const [tasks, setTasks] = useState(fetchTasksFromLocalstorage())
+  const { tasks, setTasks } = useTasks()
   const [task, setTask] = useState('')
 
   useEffect(() => saveTasksOnLocalstorage(tasks), [tasks])
@@ -67,7 +68,7 @@ const App = () => {
       {tasks.length > 0 && (
         <div className='sm:px-10 md:px-20 lg:px-52 xl:px-96'>
           <section className='mt-3 md:mt-5 lg:mt-10 p-1 py-2 sm:mx-auto bg-blue-ribbon-500 rounded'>
-            <TaskList tasksList={tasks} onCompleteTask={onCompleteTask} onEditTask={onEditTask} onDeleteTask={onDeleteTask} />
+            <TaskList onCompleteTask={onCompleteTask} onEditTask={onEditTask} onDeleteTask={onDeleteTask} />
           </section>
         </div>
       )}
